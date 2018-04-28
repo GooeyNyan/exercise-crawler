@@ -7,14 +7,15 @@ axios.defaults.headers.post["Content-Type"] =
   "application/x-www-form-urlencoded";
 axios.defaults.headers.post["Accept"] = "text/html";
 
+const DATABASE_HOST = ``; // fill it
+const DATABASE_USER = ``; // fill it
+const DATABASE_NAME = ``; // fill it
 const COFFEE_TIME = 2000; // take a rest for next requests
 const CONCURRENCY = 10;
+const REQUEST_URL = ``; // fill it
 
 const getExercise = ({ studentId, name }) =>
-  axios.post(
-    `https://example.com`,
-    qs.stringify({ number: studentId, name })
-  );
+  axios.post(REQUEST_URL, qs.stringify({ number: studentId, name }));
 
 const justWaitForCoffee = () =>
   new Promise(resolve => {
@@ -23,7 +24,9 @@ const justWaitForCoffee = () =>
 
 (async () => {
   const connection = await mysql.createConnection({
-    database: "exercise"
+    host: DATABASE_HOST,
+    user: DATABASE_USER,
+    database: DATABASE_NAME
   });
 
   const [students, fields] = await connection.execute(`SELECT * FROM student`);

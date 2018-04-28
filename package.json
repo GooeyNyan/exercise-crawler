@@ -1,8 +1,8 @@
 {
   "name": "exercise-crawler",
   "scripts": {
-    "start": "node --experimental-modules src/crawler.mjs",
-    "database": "node --experimental-modules src/mysql.mjs"
+    "start": "node --experimental-modules crawler.mjs",
+    "database": "node --experimental-modules mysql.mjs"
   },
   "version": "1.0.0",
   "main": "index.js",

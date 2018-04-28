@@ -1,9 +1,14 @@
 import fs from "fs";
 import mysql from "mysql2/promise";
 
-fs.readFile(`student.txt`, "utf8", async (err, data) => {
+const DATABASE_HOST = ``; // fill it
+const DATABASE_USER = ``; // fill it
+const DATABASE_NAME = ``; // fill it
+const STUDENT_INFO = `student.txt`;
+
+fs.readFile(STUDENT_INFO, "utf8", async (err, data) => {
   if (err) {
-    throw Error(err);
+    throw new Error(err);
   }
 
   const students = data.split(`\n`).map(x => {
@@ -28,12 +33,24 @@ fs.readFile(`student.txt`, "utf8", async (err, data) => {
   sql = sql.slice(0, sql.length - 2);
 
   const connection = await mysql.createConnection({
-    database: "exercise"
+    host: DATABASE_HOST,
+    user: DATABASE_USER,
+    database: DATABASE_NAME
   });
 
-  await connection.execute(`DELETE FROM student`);
+  await connection.execute("DROP TABLE IF EXISTS `student`");
+  await connection.execute(
+    "CREATE TABLE `student` (" +
+      "`id` int(11) unsigned NOT NULL AUTO_INCREMENT," +
+      "`studentId` varchar(255) DEFAULT NULL," +
+      "`name` varchar(255) DEFAULT NULL," +
+      "`times` int(11) DEFAULT NULL," +
+      "`grade` int(11) DEFAULT NULL," +
+      "`class` int(11) DEFAULT NULL," +
+      "PRIMARY KEY (`id`)" +
+      ") ENGINE=InnoDB DEFAULT CHARSET=utf8;"
+  );
 
   await connection.execute(sql);
-  const [rows, fields] = await connection.execute(`SELECT * FROM student`);
   await connection.close();
 });
