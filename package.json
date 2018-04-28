@@ -1,0 +1,20 @@
+{
+  "name": "exercise-crawler",
+  "scripts": {
+    "start": "node --experimental-modules src/crawler.mjs",
+    "database": "node --experimental-modules src/mysql.mjs"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Gooey Nyan <Sanjwinds@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@types/jsdom": "^11.0.4",
+    "@types/node": "^10.0.0",
+    "axios": "^0.18.0",
+    "fs": "^0.0.1-security",
+    "jsdom": "^11.9.0",
+    "mysql2": "^1.5.3",
+    "qs": "^6.5.1"
+  }
+}
