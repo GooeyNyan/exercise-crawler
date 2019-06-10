@@ -1,20 +1,22 @@
 {
   "name": "exercise-crawler",
   "scripts": {
-    "start": "node --experimental-modules crawler.mjs",
-    "database": "node --experimental-modules mysql.mjs"
+    "start": "node crawler.js"
   },
   "version": "1.0.0",
   "main": "index.js",
   "author": "Gooey Nyan <Sanjwinds@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@types/jsdom": "^11.0.4",
-    "@types/node": "^10.0.0",
-    "axios": "^0.18.0",
-    "fs": "^0.0.1-security",
-    "jsdom": "^11.9.0",
-    "mysql2": "^1.5.3",
-    "qs": "^6.5.1"
+    "@types/jsdom": "^12.2.3",
+    "@types/node": "^12.0.7",
+    "axios": "^0.19.0",
+    "jsdom": "^15.1.1",
+    "qs": "^6.7.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.3"
   }
 }
